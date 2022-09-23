@@ -1,0 +1,147 @@
+
+
+			FUNDAMENTOS DE GIT
+
+
+Comandos en consola o cmd
+	casi todos los comnados comienzan por la palabra git
+	Se colocan dos guiones -- para comandos completos
+	Se coloca solo un guion - para una abreviacion de comando
+
+
+
+Al crear un nuevo repositorio
+	Se crea una carpeta llamada .git la cual por defecto esta oculta
+		No se debe tocar esta carpeta, esta carpeta guarda todo el historial del repositorio
+Estatus del repositorio
+	Con el comando git status
+		Se ve el nombre de la rama en la que se esta trabajando
+		Se ven los archivos que se tienen, si estan en rojo significa que no se les esta haciendo seguimiento
+		Si aparaecen en verde significa que estan en el stage para tomarle la foto (hacer el commit)
+Commits
+	Los commits son como fotos que se les hace a los archivos
+	Con estos se tiene un registro de como estaba el repositorio en ese punto
+	Se puede regresar e ese punto el tiempo para ver el repositorio
+Checkout
+	Con el checkout podemos regresar el repositorio a un punto del tiempo en el que se hizo un commit
+	Regresa todos los archivos a como estaban en ese punto
+	aunque ya se hayan borrado los archivos, los recupera y reconstruye
+	Las capetas y archivos a los que no se les esta dando seguimiento no los reconstruye ni los borra
+Ramas
+	Las ramas son vifurcaciones del proyecto principal en el que se pueden realizar cambios sin afectar 
+	a la rama principal y en caso de querer mantener esos cambios se hace una union de ramas
+	pero en caso de que no se pretendan mantener los cambios se puede eliminar esa rama sin que afecte al proyecto
+	principal o rama principal
+	Se recomienda que la rama principal tenga unicamente la version final del proyecto
+	y crear otras ramas para relizar modificaciones
+Archivo README.md
+	Normalmente los repositorios siempre tiene este archivo
+	Contiene informacion general del repositorio
+	.md es de MarckDown un tipo de archivo que mediante unso comandos le da estilo al texto que e escriba
+	como negritas, cursiva etc.
+Log
+	En esta parte se ven los commits que se han hecho 
+	Contiene la informacion del commit
+	el Hash es el numero unico que identifica al commit
+	Contiene el nombre del autor e email, la fecha
+	y El nombre o mensaje del commit
+	En el ultimo commit se tiene marcado el HEAD y a la rama a la que esta apuntando
+	Para navegar entre los commits se apreitan las teclas arriba  abajo
+	Para salir se oprime la letra q
+Visual Studio
+	Visual Studio tiene un apartado (source Control) el cual es una interfaz grafica que ayuda a hacer los commits
+	y demas tareas
+	Se muestran todos los archivos que han sido modificados
+	Se tiene varios botones como para abrir el archivo, descartar los cambios hechos, agregar el archivo al stage o removerlo
+	En la parte de arriba se coloca el nombre del commit y con control + Enter se hace el commit
+	Se tiene tambien un boton arriba de todo el cual nos estructura los archivos modificados en las carpetas que los contiene por si queremos agregar toda
+	una carpeta al stage del tiron
+.gitkeep
+	Este es un archivo especial para que git haga seguimiento de la carpeta que lo contiene aunque esta este vacia
+Modificadores
+	En varios de los comandos de git se pueden agregar modificadores o vanderas como --short el cual en status nos da un resumen del normal status
+Alias
+	Los alias son comanos de git resumidos a un comando nuevo que creamos nosotros
+
+
+
+ir a una carpeta en especifico
+	cd (ruta de la carpeta)																								[cd]
+
+//////////////////////////////////////// 	GIT EN GENERAL 		//////////////////////////////////////////////////////////////////////////////////////////
+
+ver la version de git:
+	git --version																										[--version]
+	git -v
+Ver la ayuda general de git:
+	git help																											[help]
+Ver ayuda en particular de algun comando
+	git help (comando)																									[help (comando)]
+
+
+//////////////////////////////////////		CONFIGURACION GLOBAL DE GIT		//////////////////////////////////////////////////////////////////////////////
+
+Configurar el nombre de usuario
+	git config --global user.name "(Nombre de usuario)"																	[config --global user.name]
+Configurar el email del usuario
+	git config --global user.email "(email)"																			[config --global user.email]
+Ver configuraciones globales
+	git config --global -e																								[config --global -e]
+Navegar en la pantalla de configuracion o aspectos generales
+	para editar
+		a
+	para dejar de editar
+		Esc
+	para guardar lo editado
+		:w
+	para salir
+		:q
+	para editar y salir inmediatamente
+		:wq!
+Cambiar el nombre por defecto de la rama principal del repositorio
+	git config --global init.defaultBranch <name>
+Crear un alias
+	git config --global alias.(nombreDelAlias) "(comando a ejecutar)"
+
+//////////////////////////////////		OPERACIONES EN REPOSITORIOS		//////////////////////////////////////////////////////////////////////////////////
+
+Inicializar un repositorio
+	git init 																											[init]
+Estatus de la rama, commits archivos
+	git status 																											[status]
+Agregar un archivo al stage del commit
+	git add (nombre del archivo)																						[add (nombreArchivo)]
+Agregar todos los archivo
+	git add .																											[add .]
+Agregar todos los archivos con una misma extencion
+	git add *.(extencion)																								[add *.(extencion)]
+Agregar todos los archivos con una misma extencion de una carpeta en especifico
+	git add (nombreCarpeta)/*.(extencion)																				[add (nombreCarpeta)/*.(extencion)]
+Agregar todos los archivos de una carpeta en especifico
+	git add (nombreCarpeta)/																							[add (nombreCarpeta)/]
+Remover archivo del stage
+	git reset (nombre del archivo)																						[reset (nombreArchivo)]
+Hacer un commit
+	git commit -m "(nombre del commit)"																					[commit -m "(nombreCommit)"]
+Agrega los archivos que se les esta haciendo seguimiento al state y se hace un commit
+	git commit -am "(nombre del commit)"																				[commit -am "(nombreCommit")]
+Regresar el repositorio al estado del ultimo commit
+	git checkout -- .																									[checkout -- .]
+Ver los commits que se han hecho
+	git log																												[log]
+
+
+//////////////////////////////			OPERACIONES EN RAMAS		/////////////////////////////////////////////////////////////////////////////////////////
+
+Ver en que rama se esta trabajando
+	git branch 																											[branch]
+Cambiar el nombre de la rama
+	git branch -m (nombreActual) (nombreNuevo)																			[-m (nombreActual) (nombreNuevo)]
+
+
+
+
+
+
+
+

@@ -1,0 +1,198 @@
+
+
+//////////////////////////////////////// 	GIT EN GENERAL 		//////////////////////////////////////////////////////////////////////////////////////////
+
+ver la version de git:
+	git --version																										[--version]
+	git -v
+Ver la ayuda general de git:
+	git help																											[help]
+Ver ayuda en particular de algun comando
+	git help (comando)																									[help (comando)]
+
+
+//////////////////////////////////////		CONFIGURACION GLOBAL DE GIT		//////////////////////////////////////////////////////////////////////////////
+
+Configurar el nombre de usuario
+	git config --global user.name "(Nombre de usuario)"																	[config --global user.name]
+Configurar el email del usuario
+	git config --global user.email "(email)"																			[config --global user.email]
+Ver configuraciones globales
+	git config --global -e																								[config --global -e]
+Navegar en la pantalla de configuracion o aspectos generales
+	para editar
+		a 																												[a]
+	para dejar de editar
+		Esc 																											[Esc]
+	para guardar lo editado
+		:w 																												[:w]
+	para salir
+		:q 																												[:q]
+	para editar y salir inmediatamente
+		:wq! 																											[:wq!]
+Cambiar el nombre por defecto de la rama principal del repositorio
+	git config --global init.defaultBranch <name>																		[init.defaultBranch <name>]
+Crear un alias
+	git config --global alias.(nombreDelAlias) "(comando a ejecutar)"													[alias.(nombreAlias) "(comandos)"]
+Configurar la estrategia de pull por defecto en fast forward
+	git config --global pull.ff only																					[pull.ff only]
+Configurar la estrategia de pull por defecto en rebase (utilizar este mejor)
+	git config --global pull.rebase true																				[pull.rebase true]
+
+//////////////////////////////////		OPERACIONES EN REPOSITORIOS		//////////////////////////////////////////////////////////////////////////////////
+
+Inicializar un repositorio
+	git init 																											[init]
+Estatus de la rama, commits archivos
+	git status 																											[status]
+Agregar un archivo al stage del commit
+	git add (nombre del archivo)																						[add (nombreArchivo)]
+Agregar todos los archivo
+	git add .																											[add .]
+Agregar todos los archivos con una misma extencion
+	git add *.(extencion)																								[add *.(extencion)]
+Agregar todos los archivos con una misma extencion de una carpeta en especifico
+	git add (nombreCarpeta)/*.(extencion)																				[add (nombreCarpeta)/*.(extencion)]
+Agregar todos los archivos de una carpeta en especifico
+	git add (nombreCarpeta)/																							[add (nombreCarpeta)/]
+Remover archivo del stage
+	git reset (nombre del archivo)																						[reset (nombreArchivo)]
+Hacer un commit
+	git commit -m "(nombre del commit)"																					[commit -m "(nombreCommit)"]
+Agrega los archivos que se les esta haciendo seguimiento al state y se hace un commit
+	git commit -am "(nombre del commit)"																				[commit -am "(nombreCommit")]
+Regresar el repositorio al estado del ultimo commit
+	git checkout -- .																									[checkout -- .]
+Regresar el repositorio al estado en el que se encontraba un commit en especifico
+	git checkout (numeroHash commit)																					[checkout (numeroHash commit)]
+Regresar el un archivo al estado en el que se encontraba un commit en especifico
+	git checkout (numeroHas commit) (nombreArchivo)																		[checkout (numeroHasCommit) (archivo)]
+Ver los commits que se han hecho
+	git log																												[log]
+
+
+//////////////////////////////////		REVISAR MODIFICACIONES		///////////////////////////////////////////////////////////////////
+
+Ver modificaciones que se hicieron y en que archivos
+	git diff																											[diff]
+Ver modificaciones que se hicieorn en archivos en el stage
+	git diff --stage																									[diff --stage]
+Ver todos los commits que se han hecho o el historial del repositorio
+	git reflog																											[reflog]
+
+
+////////////////////////////////		MODIFICACIONES EN COMMITS	/////////////////////////////////////////////////////////////////////
+
+Renombrar el ultimo commit
+	git commit --amend -m "(nuevo nombre)"																				[--amend -m "(nuevo nombre)"]
+Entrar al modo edicion del ultimo commit
+	git commit --amend																									[--amend]
+Eliminar ultimo commit sin eliminar cambios en archivos
+	git reset --soft HEAD^																								[reset --soft HEAD^]
+	git reset --soft (numeroHash del commit)																			[reset --soft (numeroHash del commit)]
+Eliminar commits sin elminar cambios pero bajando los archivos del stage
+	git reset --mixed HEAD^																								[reset --mixed HEAD^]
+	git reset --mixed (numeroHash del commit)																			[reset --mixed (numeroHashCommit)]
+Eliminar commits eliminando cambios en los archivos y bajandolos del stage 
+	git reset --hard HEAD^																								[reset --hard HEAD^]
+	git reset --hard (numeroHash del commit)																			[reset --hard (numeroHash del commit)]
+Volver a un commit eliminado con su codigo hash
+	git reset --hard (numeroHash del commit eliminado)																	[reset --hard (numeroHash del commitEliminado)]
+
+
+
+/////////////////////////////		MODIFICACIONES EN ARCHIVOS		///////////////////////////////////////////////////////////////////////////
+
+Renombrar un archivo
+	git mv (nombreArchivoActual) (nuevoNombreArchivo)																	[mv (nombreArchivoActual) (nuevoNombreArchivo)]
+Eliminar un archivo
+	git rm (nombreArchivo)																								[rm (nombreArchivo)]
+
+//////////////////////////////			OPERACIONES EN RAMAS		/////////////////////////////////////////////////////////////////////////////////////////
+
+Ver en que rama se esta trabajando y que ramas hay
+	git branch 																											[branch]
+Ver que ramas hay y que ramas hay en repoRemoto
+	git branch -a																										[branch -a]
+Cambiar el nombre de la rama
+	git branch -m (nombreActual) (nombreNuevo)																			[-m (nombreActual) (nombreNuevo)]
+Crear una nueva rama
+	git branch (nombreDeLaRama)																							[branch (nombreRama)]
+Moverse a otra rama
+	git checkout (nombreDeLaRama)																						[checkout (nombreDeLaRama)]
+Crear una nueva rama y moverse automaticamente a ella
+	git checkout -b (nombreRama)																						[checkout -b (nombreRama)]
+Unir dos ramas
+	git merge (nombreRamaAUnir)																							[merge (nombreRamaAUnir)]
+Eliminar una rama
+	git branch -d (nombreRama)																							[branch -d (nombreRama)]
+Eliminar una rama de manera forzada
+	git branch -d (nombreRama) -f 																						[branch -d (nombreRama) -f]
+
+
+////////////////////////////////////////////	TAGS		////////////////////////////////////////////////////////////////////////////////
+
+Crear un tag para el ultimo commit
+	git tag (nombreTag)																									[tag (nombreTag)]
+Ver todos los tags que se tienen
+	git tag 																											[tag]
+Eliminar un tag
+	git tag -d (nombreTag)																								[tag -d (nombreTag)]
+Crear un tag anotado con mensaje
+	git tag -a (nombreTAg) -m "(mensaje)"																				[tag -a (nombreTag) -m "(mensaje)"]
+Agregar un tag a un commit especifico
+	git tag -a (nombreTag) (codigoHashDelCommit) -m "(mensaje)"											[tag -a (nombreTag) (codigoHashCommit) -m "(mensaje)"]
+Ver informacion o editar un tag
+	git show (nombreTag)																								[show (nombreTag)]
+
+
+///////////////////////////////////////////////////////		STASH		///////////////////////////////////////////////////////////////////////////////
+
+Llevar las modificaciones al stash, hacer un git stash
+	git stash																											[stash]
+Agregar un stash con un mensaje
+	git stash save "(mensaje)"																							[stash save "(mensaje)"]
+Ver la lista de los stash que se tienen
+	git stash list 																										[stash list]
+Ver la lista de los stash con mas informacion
+	git stash list --stat																								[stash list --stat]
+Reincorporar el ultimo stash al trabajo actual
+	git stash pop																										[stash pop]
+Borrar todos los stash que se tengan 
+	git stash clear																										[stash clear]
+Reincorporar un stash en especifico
+	git stash apply 'stash@{(numeroDeStash)'}																			[stash apply 'stash@{(numeroDeStash)}']
+Borrar un stash en especifico
+	git stash drop 'stash@{(numeroStash)}'																				[stash drop 'stash@{(numeroStash)}']
+Ver informacion especifica de algun stash
+	git stash show 'stash@{(numeroStash)}'																				[stash show 'stash@{(numeroStash)}']
+
+
+
+/////////////////////////////////////////////////////		REBASE		/////////////////////////////////////////////////////////////////////////////////////
+
+Hacer un rebase master
+	git rebase master																									[rebase master]
+Entrar en el rebase interactivo
+	git rebase -i HEAD~(numeroCommits)																					[rebase -i HEAD~(numeroComits)]
+Salir del proceso de rebase interactivo
+	git rebase --continue																								[rebase --continue]
+
+//////////////////////////////////////////		GITHUB O REPOSITORIO REMOTO		////////////////////////////////////////////////////////////////////////
+
+Agregar un repositorio remoto 
+	git remote add (nombreRepositorio) (Ruta del repositorio)															[remote add (nombreRepo) (Ruta)]
+Ver los repositorios remotos que tenermos
+	git remote -v																										[remote -v]
+Hacer un push de una rama
+	git push -u (repoRemoto) (nombreRama)																				[push -u (repoRemoto) (nombreRama)]
+Hacer un push de los tags del repositorio
+	git push --tags																										[push --tags]
+Hacer un pull de un repositorio remoto
+	git pull (repoRemoto) (nombreRama)																					[pull (repoRemoto) (nombreRama)]
+Clonar un repositorio
+	git clone (url del repo)																							[clone (url del repo)]
+Hacer un fetch del repositorio remoto
+	git fetch																											[fetch (repoRemoto) (nombreRama)]
+Actualizar las ramas locales con las ramas en el remoto
+	git remote prune (repoRemoto)																						[remote prune (repoRemoto)]
